@@ -4,21 +4,21 @@ public class QuestionService {
     Question[] questions = new Question[5];
 
     String selection[] = new String[5];
-    public QuestionService() {  //constructor
+
+    public QuestionService() { // constructor
         questions[0] = new Question(1, "Number of members in BTS?", "5", "7", "9", "4", "7");
         questions[1] = new Question(2, "Number of members in BTS?", "5", "7", "9", "4", "7");
         questions[2] = new Question(3, "Number of members in BTS?", "5", "7", "9", "4", "7");
         questions[3] = new Question(4, "Number of members in BTS?", "5", "7", "9", "4", "7");
         questions[4] = new Question(5, "Number of members in BTS?", "5", "7", "9", "4", "7");
 
-
-
     }
 
     int i = 0;
+
     public void playQuiz() {
         for (Question q : questions) {
-            System.out.println("Question no. "+q.getId());
+            System.out.println("Question no. " + q.getId());
             System.out.println(q.getQuestion());
             System.out.println(q.getOpt1());
             System.out.println(q.getOpt2());
@@ -32,9 +32,27 @@ public class QuestionService {
         }
 
         System.out.println();
-        
+
         for (String s : selection) {
             System.out.println(s);
         }
+
+    }
+
+    public void printScore() {
+        int score = 0;
+
+        for(int i=0; i<questions.length;i++){
+            Question que = questions[i];
+            String answer = que.getAnswer();
+            String userAnswer = selection[i];
+            if (userAnswer.equals(answer)){
+                score++;
+            }
+        }
+
+        System.out.println();
+        System.out.println("score: "+ score);
+
     }
 }
